@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../css/header.css";
 
 const Header = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [toggleLink, setToggleLink] = useState("");
+  const [scrollHeader, setScrollHeader] = useState(false);
 
   const toggleNav = () => {
     setToggleMenu(!toggleMenu);
@@ -13,8 +14,21 @@ const Header = () => {
     setToggleLink(param);
     setToggleMenu(false);
   };
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        setScrollHeader(true);
+      } else {
+        setScrollHeader(false);
+      }
+    });
+  }, []);
   return (
-    <header className="header" id="header">
+    <header
+      className={`header ${scrollHeader ? "scroll-header" : ""}`}
+      id="header"
+    >
       <nav className="nav container">
         <a href="#section" className="nav__logo">
           <i className="ri-steering-line"></i>
