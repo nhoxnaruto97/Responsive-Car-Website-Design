@@ -49,9 +49,9 @@ const defaultCar = [
   },
 ];
 
-const Featured = (props) => {
+const Featured = () => {
   const [cars, setCars] = useState([...defaultCar]);
-
+  const keys = cars.map(({ id }) => id);
   return (
     <section className="featured section">
       <h2 className="section__title">Featured Luxury Cars</h2>
@@ -109,15 +109,11 @@ const Featured = (props) => {
         </ul>
 
         <ReactMixitup
-          keys={cars}
-          renderCell={(car, style, ref) => {
+          keys={keys}
+          renderCell={(key, style, ref) => {
+            const car = cars.find((car) => car.id === key) || {};
             return (
-              <article
-                ref={ref}
-                key={car}
-                className="featured__card"
-                id={car.id}
-              >
+              <article ref={ref} key={key} className="featured__card">
                 <div className="shape shape__smaller"></div>
 
                 <h1 className="featured__title">{car.title}</h1>
