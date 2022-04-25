@@ -1,31 +1,14 @@
 import React from "react";
-import Swiper from "swiper";
-import "../css/popular.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper";
 import pic1 from "../img/popular1.png";
 import pic2 from "../img/popular2.png";
 import pic3 from "../img/popular3.png";
 import pic4 from "../img/popular4.png";
 import pic5 from "../img/popular5.png";
+import "../css/popular.css";
 
 const Popular = () => {
-  const swiper = new Swiper(".popular__container", {
-    loop: true,
-    spaceBetween: 24,
-    slidesPerView: "auto",
-    grabCursor: true,
-    pagination: {
-      el: ".swiper-pagination",
-      dynamicBullets: true,
-    },
-    breakpoints: {
-      768: {
-        slidesPerView: 3,
-      },
-      1024: {
-        spaceBetween: 48,
-      },
-    },
-  });
   return (
     <section className="popular section" id="popular">
       <h2 className="section__title">
@@ -33,9 +16,19 @@ const Popular = () => {
         Of The Porsche Brand
       </h2>
 
-      <div className="popular__container container swiper">
+      <Swiper
+        pagination={{
+          el: ".swiper-pagination",
+          dynamicBullets: true,
+        }}
+        modules={[Pagination]}
+        loop={true}
+        spaceBetween={24}
+        slidesPerView={"auto"}
+        className="popular__container container swiper"
+      >
         <div className="swiper-wrapper">
-          <article className="popular__card swiper-slide">
+          <SwiperSlide className="popular__card swiper-slide">
             <div className="shape shape__smaller"></div>
             <h1 className="popular__title">Porsche</h1>
             <h3 className="popular__subtitle">Turbo S</h3>
@@ -59,9 +52,9 @@ const Popular = () => {
             <button className="button popular__buton">
               <i className="ri-shopping-bag-2-line"></i>
             </button>
-          </article>
+          </SwiperSlide>
 
-          <article className="popular__card swiper-slide">
+          <SwiperSlide className="popular__card swiper-slide">
             <div className="shape shape__smaller"></div>
             <h1 className="popular__title">Porsche</h1>
             <h3 className="popular__subtitle">Taycan</h3>
@@ -84,9 +77,9 @@ const Popular = () => {
             <button className="button popular__buton">
               <i className="ri-shopping-bag-2-line"></i>
             </button>
-          </article>
+          </SwiperSlide>
 
-          <article className="popular__card swiper-slide">
+          <SwiperSlide className="popular__card swiper-slide">
             <div className="shape shape__smaller"></div>
             <h1 className="popular__title">Porsche</h1>
             <h3 className="popular__subtitle">Turbo S Cross</h3>
@@ -109,9 +102,9 @@ const Popular = () => {
             <button className="button popular__buton">
               <i className="ri-shopping-bag-2-line"></i>
             </button>
-          </article>
+          </SwiperSlide>
 
-          <article className="popular__card swiper-slide">
+          <SwiperSlide className="popular__card swiper-slide">
             <div className="shape shape__smaller"></div>
             <h1 className="popular__title">Porsche</h1>
             <h3 className="popular__subtitle">Boxster 718</h3>
@@ -134,9 +127,9 @@ const Popular = () => {
             <button className="button popular__buton">
               <i className="ri-shopping-bag-2-line"></i>
             </button>
-          </article>
+          </SwiperSlide>
 
-          <article className="popular__card swiper-slide">
+          <SwiperSlide className="popular__card swiper-slide">
             <div className="shape shape__smaller"></div>
             <h1 className="popular__title">Porsche</h1>
             <h3 className="popular__subtitle">Cayman</h3>
@@ -159,11 +152,11 @@ const Popular = () => {
             <button className="button popular__buton">
               <i className="ri-shopping-bag-2-line"></i>
             </button>
-          </article>
+          </SwiperSlide>
         </div>
 
         <div className="swiper-pagination"></div>
-      </div>
+      </Swiper>
     </section>
   );
 };
